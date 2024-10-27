@@ -1,16 +1,22 @@
 from telethon import TelegramClient
-# from telethon.tl.functions.messages import GetHistoryRequest
+import os
+from dotenv import load_dotenv
+
 # Replace with your API ID, API Hash, and your phone number
 api_id = '20979830'
 api_hash = '7cbaadc64dabf7f7d18d8ec26f2bd7c0'
-phone_number = '+919039479917'  # Your phone number with country code, e.g., +123456789
+phone_number = '+919039479917'  # Your phone number with country code
 
-# Create the client and connect
-client = TelegramClient('5499528760', api_id, api_hash)
+# Name of the session file (it will create a 'session_name.session' file)
+session_name = 'my_telegram_session'
 
+# Create the client with the session file
+client = TelegramClient(session_name, api_id, api_hash)
 
 async def main():
-    await client.start()
+    # Start the client. This will only ask for the code sent to your Telegram app.
+    await client.start(phone=lambda: phone_number)
+    print("Client started")
 
     # Get all dialogs (chats) the user is a part of
     async for dialog in client.iter_dialogs():

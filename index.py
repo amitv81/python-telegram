@@ -1,10 +1,13 @@
 #https://www.pythonanywhere.com/r
 
 from telethon import TelegramClient, events
+import os
+from dotenv import load_dotenv
 
-api_id = '20979830'
-api_hash = '7cbaadc64dabf7f7d18d8ec26f2bd7c0'
-phone_number = '+919039479917'  # Your phone number with country code, e.g., +123456789
+load_dotenv()
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
+phone_number = os.getenv('PHONE_NUMBER')
 
 # Create the client and connect
 client = TelegramClient('5499528760', api_id, api_hash)

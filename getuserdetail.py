@@ -1,10 +1,14 @@
 from telethon import TelegramClient
-from telethon.tl.types import User, Chat, Channel  # Import the required classes
+from telethon.tl.types import User, Chat, Channel 
+import os
+from dotenv import load_dotenv
 
 # Replace with your values
-api_id = '20979830'
-api_hash = '7cbaadc64dabf7f7d18d8ec26f2bd7c0'
-phone_number = '+919039479917'  # Your phone number with country code, e.g., +123456789
+# Access the environment variables
+load_dotenv()
+api_id = os.getenv('API_ID')
+api_hash = os.getenv('API_HASH')
+phone_number = os.getenv('PHONE_NUMBER')
 
 # Create the client and connect
 client = TelegramClient('user_session', api_id, api_hash)
